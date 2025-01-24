@@ -36,7 +36,7 @@ jobs:
       id: build-image
       env:
         ECR_REGISTRY: 378741484408.dkr.ecr.us-east-1.amazonaws.com #${{ steps.login-ecr.outputs.registry }}
-        WORKER_IMAGE_TAG: worker-prod-latest
+        WORKER_IMAGE_TAG: worker-app-latest
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$WORKER_IMAGE_TAG --build-arg aws_region=${{ env.AWS_REGION }} --build-arg copy_or_mount="copy" -f worker/Dockerfile ./worker
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$WORKER_IMAGE_TAG
